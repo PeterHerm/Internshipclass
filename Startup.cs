@@ -38,19 +38,4 @@ namespace RazorMvc
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-        }
-    }
-}
+           
