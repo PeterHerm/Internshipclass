@@ -38,4 +38,3 @@ namespace RazorMvc
                 app.UseHsts();
             }
 
-           
