@@ -9,18 +9,22 @@
 </head>
 <body>
     <div>
-        <h1>@ViewData["Title"]</h1>
-        <p>This is our classroom.</p>
-        <ul id="list">
-            <li>Borys</li>
-            <li>Ale</li>
-            <li>Peter</li>
-        </ul>
-    </div>
+        <h2>Here is our classroom</h2>
 
-    <input id="newcomer" title="Name" type="text" />
-    <button id="add">Add new commer</button>
-    <p><img src="/Images/Teams.png" width="200px" /></p>
-    <script src="/js/addNewcommers.js"></script>
+        <ul id="list">
+            
+            @for (var i = 0; i < Model.Members.Count; i++)
+            {
+                var member = Model.Members[i];
+
+    <li class="member">
+        @member
+    </li>}
+        </ul>
+
+        <input id="newcomer" title="Name" type="text" />
+        <button id="add">Add new commer</button>
+        <p><img src="/Images/Teams.png" width="200px" /></p>
+        <script src="/js/addNewcommers.js"></script>
 </body>
 </html>
