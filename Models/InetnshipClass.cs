@@ -10,9 +10,10 @@ namespace RazorMvc.Models
         {
             _members = new List<string>
             {
-                "Borys",
-                "Liova",
-                "Orest",
+                "Peter",
+                "Dali",
+                "Bogdan",
+                "GAsfaw",
             };
         }
 
