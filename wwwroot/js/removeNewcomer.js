@@ -1,21 +1,25 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
-    $(".delete").click(function () {
+    $("#list").on("click", ".delete", function () {
 
-        var newcomerId = $(this).attr('memberId');
-        console.log($(".member"));
+        var $li = $(this).parent('li');
+        var index = $li.index();
+
+        console.log(`index=${index}`);
+        console.log(`$li=${$li}`);
 
         $.ajax({
-            url: `/Home/RemoveMember/${newcomerId}`,
-            type: 'DELETE',
+            method: "DELETE",
+            url: `/Home/RemoveMember?index=${index}`,
             success: function (data) {
-                $(".member").eq(newcomerId).remove();
+
+                $li.remove();
+
             },
             error: function (data) {
-                alert(`Failed to remove ${newcomerId}`);          
+                alert(`Failed to delete`);
             },
         });
-    })    
-    
+    })
+
 });
