@@ -7,8 +7,9 @@ $(document).ready(function () {
         $.ajax({
             url: `/Home/AddMember?member=${newcomerName}`,
             success: function (data) {
+                var index = $("#list").children().length;
                 // Remember string interpolation
-                $("#list").append(`<li>${data}<span class="fa fa-pencil"></span><i class="fa fa-remove delete"></i></li>`);
+                $("#list").append(`<li><span class="name">${data}</span><span class="delete fa fa-remove"></span><i class="fa fa-pencil" memberId="${index}"></i></li>`);
 
                 $("#newcomer").val("");
             },
