@@ -13,7 +13,6 @@ namespace RazorMvc.Models
                 "Peter",
                 "Dali",
                 "Bogdan",
-                "GAsfaw",
             };
         }
 
