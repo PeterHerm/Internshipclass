@@ -7,10 +7,10 @@ $(document).ready(function () {
         $.ajax({
             url: `/Home/AddMember?member=${newcomerName}`,
             success: function (data) {
-                var index = $("#list").children().length;
                 // Remember string interpolation
-                $("#list").append(`<li><span class="name">${data}</span><span class="delete fa fa-remove"></span><i class="fa fa-pencil" memberId="${index}"></i></li>`);
-
+                $("#list").append(`<li class="member">
+		            <span class="name">${data}</span><span class="delete fa fa-remove"></span><i class="startEdit fa fa-pencil" data-toggle="modal" data-target="#editClassmate"></i>
+		        </li>`);
                 $("#newcomer").val("");
             },
             error: function (data) {
@@ -18,10 +18,34 @@ $(document).ready(function () {
             },
         });
     })
-
+    
     $("#clear").click(function () {
         $("#newcomer").val("");
     })
 
+    $("#list").on("click", ".startEdit", function () {
+        var targetMemberTag = $(this).closest('li');
+        var index = targetMemberTag.index();
+        var currentName = targetMemberTag.find(".name").text();
+        $('#editClassmate').attr("memberIndex", index);
+        $('#classmateName').val(currentName);
+    })
 
+    $("#editClassmate").on("click", "#submit", function () {
+
+        var name = $('#classmateName').val();
+        var index = $('#editClassmate').attr("memberIndex");
+        console.log(`/Home/UpdateMember?index=${index}&name=${name}`);
+        $.ajax({
+            url: `/Home/UpdateMember?index=${index}&name=${name}`,
+            type: 'PUT',
+            success: function (response) {
+                $('.name').get(index).replaceWith(name);
+            }
+        });
+    })
+
+    $("#editClassmate").on("click", "#cancel", function () {
+        console.log('cancel changes');
+    })
 });
