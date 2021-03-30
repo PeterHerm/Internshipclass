@@ -8,23 +8,24 @@ namespace RazorMvc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly InternshipService intershipService;
 
-        public HomeController(ILogger<HomeController> logger, InternshipService intershipService)
+        private readonly ILogger<HomeController> _logger;
+        private readonly InternshipService internshipService;
+
+        public HomeController(ILogger<HomeController> logger, InternshipService internshipService)
         {
             _logger = logger;
-            this.intershipService = intershipService;
+            this.internshipService = internshipService;
         }
 
         public IActionResult Index()
         {
-            return View(intershipService.GetClass());
+            return View();
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return View(internshipService.GetClass());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -36,20 +37,19 @@ namespace RazorMvc.Controllers
         [HttpDelete]
         public void RemoveMember(int index)
         {
-            intershipService.RemoveMember(index);
+            internshipService.RemoveMember(index);
         }
 
         [HttpGet]
         public string AddMember(string member)
         {
-            return intershipService.AddMember(member);
+            return internshipService.AddMember(member);
         }
 
         [HttpPut]
         public void UpdateMember(int index, string name)
         {
-            intershipService.UpdateMember(index, name);
+            internshipService.UpdateMember(index, name);
         }
-
     }
 }
