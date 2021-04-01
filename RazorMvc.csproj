@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,25 +6,28 @@
 
   <ItemGroup>
     <Compile Remove="out\**" />
-    <Compile Remove="RazorMVC.Tests\**" />
+    <Compile Remove="RazorMvc.Tests\**" />
+    <Compile Remove="RazorMvc.WebAPI\**" />
     <Content Remove="out\**" />
-    <Content Remove="RazorMVC.Tests\**" />
+    <Content Remove="RazorMvc.Tests\**" />
+    <Content Remove="RazorMvc.WebAPI\**" />
     <EmbeddedResource Remove="out\**" />
-    <EmbeddedResource Remove="RazorMVC.Tests\**" />
+    <EmbeddedResource Remove="RazorMvc.Tests\**" />
+    <EmbeddedResource Remove="RazorMvc.WebAPI\**" />
     <None Remove="*.log" />
     <None Remove="out\**" />
-    <None Remove="RazorMVC.Tests\**" />
+    <None Remove="RazorMvc.Tests\**" />
+    <None Remove="RazorMvc.WebAPI\**" />
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="RestClient" Version="3.446.20952" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
 
   <PropertyGroup>
